@@ -26,11 +26,16 @@ def erase(mylist, item):
 
 
 
+#-------------------------------------------------------------------------------------------------------
+# this outputs the list of builtin objects and functions:
+# ['__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'clear', 'copy', 'fromkeys', 'get', 'items', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values']
+#-------------------------------------------------------------------------------------------------------
+print(dir(__builtins__))
 
 #--------------------------------------------------------------------------------------------------------
 # while loop shoud exit with status zero if all tests in wile loop are true
 #--------------------------------------------------------------------------------------------------------
-try:
+try:    
     chk = True
     while   (chk == True):
         chk=type(__doc__) is None
@@ -62,18 +67,18 @@ try:
         
         async def ping_server(ip):  
             pass
-        chk=inspect.iscoroutine(ping_server)
         chk=type(ping_server) is types.FunctionType
+        chk=inspect.iscoroutine(ping_server)
     
         class mamal: pass                #empty abstract class
         class bipad(mamal): pass    #empty subclass of empty class
         neanderthal=bipad()               #a new instance of bipad class derived from mamal
+        chk=type(neanderthal).__name__ == "instance"
+        chk=type(neanderthal).__class__.__name__ == "bipad"
 
         chk=issubclass(bipad, mamal)                    # True
         chk=isinstance(neanderthal,  object)          # True
         chk=isinstance(print,  object)                     # built-in function is an instance
-        chk=type(neanderthal).__name__ == "instance"
-        chk=type(neanderthal).__class__.__name__ == "bipad"
         
 except (chk.Error, e):
     print("Error %d: %s" % (e.args[0], e.args[1]))
